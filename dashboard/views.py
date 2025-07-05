@@ -38,4 +38,7 @@ from datetime import timedelta
 def check_cancellation(showtime):
     now_time = now()
     buffer_time = now_time + timedelta(minutes=20)
-    return showtime.showtime > buffer_time
+    return showtime.showtime > buffer_time 
+
+def sample_view(request):
+    return render(request, 'dashboard/sample.html')
