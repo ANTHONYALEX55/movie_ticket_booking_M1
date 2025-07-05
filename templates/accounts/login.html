@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Movie tickect booking | Login {% endblock %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/login2.css' %}">
+
+<div class="login-page">
+    
+    <div class="login-card position-relative top-50 start-50 translate-middle">
+        
+            <div class="title text-center mt-4">
+                <h3>SIGN IN</h3>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    {{form.username|as_crispy_field}}
+                </div>
+                <div class="input-group mb-3">
+                    {{form.password|as_crispy_field}}
+                    <a href="{% url 'identifyuser' %}" id="forgotpwd-text">Forgot Password ?click here  </a>
+                </div>
+                <div class="input-group mb-3">
+                <input type="submit" value="LOGIN" class="submitbtn btn btn-dark"> <br> <br> <br>
+                <span  id="login_text" >Create a new account <a href="{% url 'register' %}" id="login_url" >Register</a></span>
+            </div>
+            <div class="input-group mb-3">
+               <hr width="700px">
+            </div>
+            <div class="input-group mb-3">
+                
+                <div class="google">
+                    `        <a href="{% provider_login_url 'google' %}">
+                    <img src="{% static 'img/icon-google.png' %}" alt=""> <span>Google</span>
+                    </a>
+                </div> 
+            </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

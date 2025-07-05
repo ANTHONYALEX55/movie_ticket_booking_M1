@@ -1,0 +1,43 @@
+
+.calendar {
+    display: flex;
+    gap: 12px;
+    font-family: sans-serif;
+    padding: 10px;
+}
+
+.day {
+    text-align: center;
+    padding: 8px 10px;
+    border-radius: 8px;
+    width: 48px;
+    background: #f0f0f0;
+    color: #333;
+}
+
+.day.today {
+    background: #ef476f;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+}
+
+.day-name {
+    font-size: 12px;
+    display: block;
+}
+
+.day-number {
+    font-size: 18px;
+    display: block;
+    margin-top: 4px;
+}
+
+.month {
+    font-size: 10px;
+    display: block;
+    color: inherit;
+}
+.calendar a {
+    text-decoration: none;
+}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/proceed_to_payment.css' %}">
+
+<div class="booking-summary">
+    <h2>Booking Summary</h2>
+    
+    <div class="details">
+      <p><strong>{% for ticket in tickets %} 
+        {{ticket}} {% endfor %} ({{tickets|length}} Tickets)</strong></p>
+      <p class="subtext">{{showtime.theater}}</p>
+      <div class="row">
+        <span>Convenience fees</span>
+        <span>Rs. {{convenience_fee}}</span>
+      </div>
+      <hr>
+      <div class="row total">
+        <span>Sub total</span>
+        <span>Rs. {{sub_total}}</span>
+      </div>
+    </div>
+  
+  
+    <div class="amount-payable">
+      <div class="row">
+        <span>Amount Payable</span>
+        <span>Rs. {{sub_total}}</span>
+      </div>
+    </div>
+  
+    <div class="proceed-button" >
+     <form  method="post" action="{% url 'payment' booking.id %}">
+      {% csrf_token %}
+      <button  type="submit" id="checkout-button">Proceed</button>
+    </form>
+    </div>
+  
+    <p class="note">
+      You can cancel the tickets 2 hour(s) before the show. Refunds will be done according to <a href="#">Cancellation Policy</a>
+    </p>
+  </div>
+{% endblock %}

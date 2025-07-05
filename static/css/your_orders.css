@@ -1,0 +1,98 @@
+ body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+
+}
+
+.ticket-container {
+  display: flex;
+  justify-content: center;
+  
+}
+.container{
+  min-height: 900px;
+}
+.ticket {
+  background-color: white;
+  display: flex;
+  width: 800px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+
+.ticket-left {
+  width: 200px;
+  text-align: center;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  padding: 15px;
+}
+
+.ticket-left img {
+  width: 140px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.movie-title {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.ticket-right {
+  flex: 1;
+  padding: 20px;
+  position: relative;
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.m-ticket {
+  color: #555;
+  font-size: 0.9em;
+}
+
+.location {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+
+.pricing {
+  margin-top: 15px;
+}
+
+.pricing p {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+hr {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px dashed #ccc;
+}
+
+.total {
+  font-size: 1.2em;
+  color: #111;
+}
+
+.ticket-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  font-size: 0.9em;
+  color: #444;
+}
+ 

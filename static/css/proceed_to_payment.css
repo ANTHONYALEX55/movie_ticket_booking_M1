@@ -1,0 +1,96 @@
+  body {
+  font-family: 'Arial', sans-serif;
+  background: #f9f9f9;
+
+}
+
+.booking-summary {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+h2 {
+  color: #d64b4b;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.details {
+  margin-bottom: 20px;
+}
+
+.subtext {
+  color: #999;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 15px 0;
+}
+
+.total {
+  font-weight: bold;
+}
+
+.state-info {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #d64b4b;
+}
+
+.amount-payable {
+  background: #fff9d6;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.proceed-button {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.proceed-button button {
+  background: #ff4d6d;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.proceed-button button:hover {
+  background: #e03e5c;
+}
+
+.note {
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+}
+
+.note a {
+  color: #d64b4b;
+  text-decoration: none;
+}

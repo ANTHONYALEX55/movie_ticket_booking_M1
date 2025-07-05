@@ -1,0 +1,38 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+
+  <header class="navbar sticky-top">
+    <div class="logo">
+    <a href="{% url 'home' %}">  <img src="{% static 'img/logo.png' %}" alt="BookMyShow Logo" />
+    </a> </div>
+    <form action="{% url 'search' %}" method="post">
+    <div class="search-bar">
+     
+        {% csrf_token %}
+        <input type="text" placeholder="Search for Movies.." name="search_query" />
+      <button type="submit" class="search-btn">Search</button>
+      
+    </div>
+  </form>
+    <div class="location-auth">
+      <select class="location-select">
+        <option selected>Bengaluru</option>
+      </select>
+      {% if request.user.is_authenticated %}
+      <div class="dropdown">
+        <button class=" user-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ request.user }} <img src="{% static 'img/chevron-down-16.svg' %}" alt="">
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'yourorders' %}">your orders</a></li>
+          <li><a class="dropdown-item" href="{% url 'logout' %}">logout</a></li>
+        </ul>
+      </div>
+        
+      {% else %}
+    <a href="{% url 'login' %}"> <button class="sign-in-btn">signin/Register</button></a> 
+      {% endif %}
+      
+      
+    </div>
+  </header>

@@ -1,0 +1,52 @@
+body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .review-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .slider-container {
+      margin-bottom: 20px;
+    }
+    .slider-container label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .slider-container input[type=range] {
+      width: 100%;
+    }
+    .slider-value {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      resize: vertical;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #218838;
+    }

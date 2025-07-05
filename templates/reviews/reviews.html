@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+
+  <div class="review-box">
+    <!-- Review 1 -->
+     {% for review in reviews %}
+    <div class="review">
+      <div class="review-header">
+        <div class="user-info">{{review.user}}<br><small>Booked on <strong>movie <span style="color: red;">booking</span>application</strong></small></div>
+        <div class="rating"><span class="star">⭐</span>{{review.rating}}/10</div>
+      </div>
+      <div class="comment">
+        {{review.review_text}}
+      </div>
+    </div>
+
+    <!-- Add more reviews here -->
+    
+    {% endfor %}
+  </div>
+
+

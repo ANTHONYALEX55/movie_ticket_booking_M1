@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block header %} {% endblock %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/success.css' %}">
+
+  <div class="container">
+    <div class="success-icon">
+      <img src="https://img.icons8.com/ios-filled/100/ffffff/bank-card-back-side.png" alt="Payment Success Icon" />
+    </div>
+    <h1>Thank You!</h1>
+    <p>Payment done Successfully</p>
+    <p class="note">You will be redirected to the home page shortly<br>or click here to return to home page</p>
+    <a href="{% url 'home' %}" class="btn">Home</a>
+  </div>
+  <script>
+    setTimeout(function() {
+      window.location.href = "{% url 'home' %}"; 
+    }, 5000); 
+  </script>
+{% endblock %}
+{% block footer %}{% endblock %}

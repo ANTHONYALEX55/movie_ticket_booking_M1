@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/movie.css' %}">
+<style>
+    .col-auto {
+        float : left;
+        margin-top: 30px;
+        
+    }
+    .row{
+        margin-left: 150px;
+        margin-right: auto;
+    }
+    .actor-img {
+        border-radius: 50px;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+  <div class="container">
+    <div class="poster">
+      <img src="{{movie.movie_image.url}}" alt="Yuddhakaanda Chapter 2 Poster">
+    </div>
+    <div class="details">
+      <div class="title">{{movie.title}}</div>
+      <div class="rating-box">
+        ⭐ <span>{{rating}}/10</span> ( {{reviews|length}} users)
+      </div>
+      <div>
+        <a href="{% url 'add_review' movie.slug %}"><button id="rate">♥️ rate</button></a>
+      </div>
+      <div class="info">
+        {{movie.duration_minutes}}m • {{movie.genre}} • {{movie.release_date}} • {{movie.language}}
+      </div>
+    <a href="{% url 'theater_showtime' movie.slug today %}">  <button class="book-btn">Book tickets</button></a> <br>
+
+    
+    </div>
+  </div>
+
+  <div class="about-section">
+    <h2>About the movie</h2>
+    <p>
+      {{movie.synopsis}}
+    </p>
+  </div>
+  <div class="cast-section">
+   <div class="row">
+     {% for actor in casts %}
+
+    <div class="col-auto">
+        <img src="{{actor.image.url}}" alt="" class="actor-img"> <br>
+    <p>{{actor.name}} <br> as <br>{{actor.role}}</p>
+    </div>
+
+
+    {% endfor %}
+   </div>
+  </div>
+  {% include 'reviews/reviews.html' %}
+{% endblock %}

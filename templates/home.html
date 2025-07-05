@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<p>Welcome to movie ticket booking </p>
+<p>{{request.user}}</p>
+<a href="{% url 'logout' %}"><button>logout</button></a>
+{% endblock %}

@@ -1,0 +1,93 @@
+ body {
+      
+      font-family: Arial, sans-serif;
+      color: #fff;
+      padding: 0;
+      background-color: #111;
+    }
+
+    .container {
+      display: flex;
+      padding: 40px;
+      background-color: #111;
+    }
+
+    .poster {
+      flex: 1;
+      max-width: 250px;
+      margin-right: 40px;
+    }
+
+    .poster img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .details {
+      flex: 3;
+    }
+
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .rating-box {
+      margin-top: 10px;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 8px;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .rating-box span {
+      color: #f66;
+      font-weight: bold;
+    }
+
+    .info {
+      margin: 15px 0;
+      font-size: 15px;
+      color: #ccc;
+    }
+
+    .book-btn {
+      padding: 12px 24px;
+      background-color: #ff3366;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #rate{
+      padding: 12px 24px;
+      background-color:transparent;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+    }
+    .book-btn:hover {
+      background-color: #e82a5a;
+    }
+
+    .about-section {
+      padding: 20px 40px;
+      background-color: #1a1a1a;
+    }
+
+    .about-section h2 {
+      margin-bottom: 10px;
+    }
+
+    .about-section p {
+      color: #ddd;
+      line-height: 1.6;
+    }
+    

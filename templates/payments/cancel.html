@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+ {% block header %}
+            
+            {% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/cancel.css' %}">
+
+  <div class="container">
+    <div class="error-icon">
+      <img src="https://img.icons8.com/ios-filled/100/ffffff/delete-sign.png" alt="Transaction Failed Icon" />
+    </div>
+    <h1>Transaction Failed</h1>
+    <p>Your payment could not be processed</p>
+    <p class="note">Please try again or contact support if the issue persists</p>
+    <a href="{% url 'home' %}" class="btn">Home</a>
+  </div>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "{% url 'home' %}"; 
+    }, 5000); 
+  </script>
+
+{% endblock %}
+{% block footer %}{% endblock %}

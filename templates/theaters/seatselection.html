@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/seating.css' %}">
+  <div class="showtime-header">
+    <h2>{{movie}}</h2>
+    <p>{{theater.address}}</p>
+    <p>{{showtime.showtime}}</p>
+
+    <div class="showtimes">
+      <button>{{showtime.showtime|time:"H:i A"}}</button>
+     
+    </div>
+  </div>
+
+
+<div class="container">
+  <div class="seating">
+    <div class="category-label">Rs. {{showtime.recliner_price}} RECLINER</div>
+  <div class="seating-grid">
+    {% for row_label, seats in seat_rows.items %}
+    
+    {% if row_label.1 == 'RECLINER' %}
+  <div class="seat-row">
+    <div class="row-label">{{ row_label.0 }}</div>
+    <div class="seats">
+      
+      {% for seat in seats %}
+      
+      <div class="seat {% if seat == 0 %} disabled{% endif %}"
+      data-seat-id="{{ seat.id }}"
+      data-row-label="{{ seat.row_label }}"
+      data-seat-number="{{ seat.seat_number }}"
+      data-price="{{showtime.recliner_price}}" >
+     {{ seat.seat_number }}
+ </div>
+      {% endfor %}
+    </div>
+  </div> 
+  {% endif %}
+{% endfor %}
+  </div>
+
+  <div class="category-label">Rs. {{showtime.gold_price}} GOLD</div>
+  <div class="seating-grid">
+    {% for row_label, seats in seat_rows.items %}
+    {% if row_label.1 == 'gold' %}
+  <div class="seat-row">
+    <div class="row-label">{{ row_label.0 }}</div>
+    <div class="seats">
+    {% for seat in seats %}
+    <div class="seat {% if seat == 0  %}disabled{% endif %}"
+     data-seat-id="{{ seat.id }}"
+     data-row-label="{{ seat.row_label }}"
+     data-seat-number="{{ seat.seat_number }}"
+     data-price="{{showtime.gold_price}}">
+  {{ seat.seat_number }}
+</div>
+          {% endfor %}
+    </div>
+  </div> 
+  {% endif %}
+{% endfor %}
+</div>
+ <div class="category-label">Rs. {{showtime.silver_price}} SILVER</div>
+  <div class="seating-grid">
+    {% for row_label, seats in seat_rows.items %}
+    {% if row_label.1 == 'silver' %}
+  <div class="seat-row">
+    <div class="row-label">{{ row_label.0 }}</div>
+    <div class="seats">
+    {% for seat in seats %}
+    <div class="seat {% if seat == 0  %}disabled{% endif %}"
+     data-seat-id="{{ seat.id }}"
+     data-row-label="{{ seat.row_label }}"
+     data-seat-number="{{ seat.seat_number }}"
+     data-price="{{showtime.silver_price}}">
+  {{ seat.seat_number }}
+</div>
+    {% endfor %}
+</div>
+  </div>
+  {% endif %}
+{% endfor %}
+  </div>
+
+  <form method="POST" action="{% url 'book_ticket' showtime.id %}">
+    {% csrf_token %}
+    <input type="hidden" name="selected_seats" id="selectedSeatsInput">
+    <input type="hidden" name="total_amount" id="total_amount">
+    <p id="selectedSeatsDisplay">Selected Seats: </p>
+    <button type="submit" class="pay-button" id="payButton">Pay Rs.0</button>
+  </form>
+  </div>
+  </div>
+</div>
+
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const seatElements = document.querySelectorAll('.seat');
+      const selectedSeatsInput = document.getElementById('selectedSeatsInput');
+      const selectedSeatsDisplay = document.getElementById('selectedSeatsDisplay');
+      const payButton = document.getElementById('payButton');
+      const totalamountinput = document.getElementById('total_amount');
+    
+      let selectedSeats = [];
+      let totalPrice = 0;
+    
+      seatElements.forEach(seat => {
+        seat.addEventListener('click', () => {
+          const seatId = seat.dataset.seatId;
+          const row = seat.dataset.rowLabel;
+          const number = seat.dataset.seatNumber;
+          const price = parseInt(seat.dataset.price, 10);
+    
+          const seatCode = `${row}${number}`;
+          const seatKey = seatCode;
+    
+          const existingIndex = selectedSeats.findIndex(s => s.key === seatKey);
+    
+          if (existingIndex > -1) {
+            
+            seat.classList.remove('selected');
+            selectedSeats.splice(existingIndex, 1);
+            totalPrice -= price;
+          } else {
+            
+            seat.classList.add('selected');
+            selectedSeats.push({
+              id: seatId,
+              row: row,
+              number: number,
+              price: price,
+              seatCode: seatCode,
+              key: seatKey
+            });
+            totalPrice += price;
+          }
+    
+          
+          selectedSeats.sort((a, b) => {
+            if (a.row === b.row) return a.number - b.number;
+            return a.row.localeCompare(b.row);
+          });
+    
+          
+          selectedSeatsInput.value = JSON.stringify(selectedSeats);
+          totalamountinput.value = totalPrice;
+    
+          
+          const seatList = selectedSeats.map(s => s.seatCode).join(', ') || 'None';
+          selectedSeatsDisplay.innerText = `Selected Seats: ${seatList}`;
+    
+          
+          payButton.innerText = `Pay Rs.${totalPrice}`;
+
+        });
+      });
+    });
+    </script>
+{% endblock %}

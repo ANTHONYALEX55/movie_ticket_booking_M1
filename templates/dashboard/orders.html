@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/your_orders.css' %}">
+
+<div class="container">
+  {% for ticket,seats in tickets.items %}
+
+<div class="ticket-container">
+    <div class="ticket">
+      <div class="ticket-left">
+        <img src="{{ticket.booking.showtime.movie.movie_image.url}}" alt="Movie Poster">
+        <p class="movie-title">{{ticket.booking.showtime.movie}} </p>
+      </div>
+      <div class="ticket-right">
+        <div class="ticket-header">
+          <span>2D</span>
+          <span class="m-ticket">M-Ticket</span>
+        </div>
+        <p><strong>{{ticket.booking.showtime.movie}}</strong> <br>
+            {{ticket.booking.showtime.show_time}}</p>
+        <p class="location">{{ticket.booking.showtime.theater}}</p>
+        <p>Quantity:{{seats|length}} </p>
+        <p><strong>🎟 
+            {% for seat in seats.0 %}
+            {{seat.seat.row_label}}{{seat.seat.seat_number}}
+            {% endfor %}
+
+        </strong></p>
+        <p class="location">{{ticket.booking.showtime.theater.address}}</p>
+        <div class="pricing">
+          <p>Ticket price <span>₹ {{ticket.booking.total_amount}}</span></p>
+        </div>
+        <hr>
+        <p class="total"><strong>Amount Paid ₹ {{ticket.booking.total_amount}}</strong></p>
+        <div class="ticket-footer">
+          <div><strong>BOOKING DATE & TIME</strong><br>{{ticket.booking.booking_time}}</div>
+          <div><strong>PAYMENT METHOD</strong><br>{{ticket.payment_method}}</div>
+          <div><strong>BOOKING ID</strong><br>{{ticket.booking.id}}</div>
+        </div>
+       
+        {% if seats.1 %}
+       <a href="{% url 'cancel_booking' ticket.booking.id %}"> <button class="btn btn-danger mt-2"  >cancel ticket</button></a>
+        
+ 
+        {% endif %}
+      </div>
+      
+    </div>
+   
+  </div>
+
+
+{% endfor %}
+</div>
+{% endblock %}

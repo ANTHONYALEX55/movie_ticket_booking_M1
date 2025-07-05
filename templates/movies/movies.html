@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/movies.css' %}">
+<div class="container-fluid">
+    <div class="movies">
+        {% for movie in movies %}
+        <div class="movie-grid">
+            <a href="{% url 'movie' movie.slug %}">
+            <div class="movie-card">
+                <img src="{{movie.movie_image.url}}" alt="">
+                <h3> {{movie.title|truncatewords:3}}</h3>
+            </div>
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+</div>

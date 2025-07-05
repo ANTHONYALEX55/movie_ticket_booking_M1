@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/theater_showtimes.css' %}">
+
+<div><p>{{movie}}</p></div>
+{% include 'theaters/calendar_widget.html' %}
+  
+
+<div class="container">
+  {% for theater in theater_showtimes %}
+<div class="theater">
+    <div class="header">
+     <div class="name">{{theater.0.theater}}<div class="address">{{theater.0.theater.address}}</div></div> 
+      
+    </div>
+    <div class="info">Cancellation available</div>
+    <div class="showtimes">
+        {% for show in theater %}
+     <a  href="{% url 'seatselection' show.id %}"> <div class="time ">{{ show.showtime|time:"H:i A" }} </div></a>
+      
+    
+    {% endfor %}
+</div>
+  </div>
+ 
+{% endfor %}
+</div>
+
+{% endblock %}

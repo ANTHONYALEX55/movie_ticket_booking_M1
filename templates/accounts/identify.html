@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Movie tickect booking | Identify{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+    #submitbtn{
+        margin-left: 32px;
+
+    }
+    #login-card1{
+        height:300px;
+    }
+
+</style>
+<link rel="stylesheet" href="{% static 'css/login2.css' %}">
+
+<div class="login-page">
+    
+    <div  class="login-card position-relative top-50 start-50 translate-middle" id="login-card1">
+        
+            <div class="title text-center mt-4">
+                <h3>IDENTIFY USER</h3>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    {{form.username|as_crispy_field}}
+                </div>
+    <input type="submit" value="identify" id="submitbtn" class=" submitbtn btn btn-dark">
+</form>
+    </div>
+</div>
+
+{% endblock %}

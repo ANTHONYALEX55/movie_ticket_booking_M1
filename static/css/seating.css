@@ -1,0 +1,112 @@
+  body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+.showtime-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.showtimes button {
+  background-color: #e5f9f0;
+  border: 1px solid #2ecc71;
+  color: #2ecc71;
+  margin: 5px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.category-label {
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.seating-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+}
+
+.row-label {
+  width: 40px;
+  font-weight: bold;
+}
+
+.seats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.seat {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #27ae60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.seat:hover {
+  background-color: #e1fbe9;
+}
+
+.seat.selected {
+  background-color: #27ae60;
+  color: white;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.pay-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 180px;
+}
+.seat {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #ccc;
+  margin: 4px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.seat.selected {
+  background-color: #4caf50;
+  color: white;
+}
+.seating{
+  margin-left: 400px;
+  margin-right: auto;
+}
+.booked{
+  background-color: #a7e663;
+  
+}
+.disabled {
+  pointer-events: none;   /* Prevent clicks */
+  opacity: 0.5;           /* Visually show it's disabled */
+  cursor: not-allowed;
+}
