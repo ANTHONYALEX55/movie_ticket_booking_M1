@@ -154,7 +154,7 @@ EMAIL_HOST_USER = "anthonyalex543@gmail.com"
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "anthonyalex543@gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = 'fjxitluprhfngfps'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -183,8 +183,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': os.environ.get('google_client_id'),
-            'secret': os.environ.get('google_secret_key'),
+            'client_id': '78738620980-5bu2k64pgu49ooh5e7j0m7v9uafrbadp.apps.googleusercontent.com',
+            'secret': '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',
             'key': ''
         }
     }
@@ -196,5 +196,5 @@ LOGIN_REDIRECT_URL = '/'
 MEDIA_ROOT = BASE_DIR/'media'
 MEDIA_URL = '/media/'
 
-STRIPE_PUBLIC_KEY = os.environ.get('stripe_public_key')
-STRIPE_SECRET_KEY = os.environ.get('stripe_secret_key')
+STRIPE_PUBLIC_KEY = 'pk_test_51BTUDGJAJfZb9HEBwDg86TN1KNprHjkfipXmEDMb0gSCassK5T3ZfxsAbcgKVmAIXF7oZ6ItlZZbXO6idTHE67IM007EwQ4uN3'
+STRIPE_SECRET_KEY = 'sk_test_tR3PYbcVNZZ796tH88S4VQ2u'
