@@ -6,3 +6,4 @@ python-dotenv
 django-allauth
 django-allauth[socialaccount]
 stripe 
+gunicorn
