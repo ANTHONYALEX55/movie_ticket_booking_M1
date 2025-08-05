@@ -11,6 +11,8 @@ def MovieView(request,slug):
     casts = Cast.objects.filter(movie=movie)
     reviews = Review.objects.filter(movie=movie)
     rating = reviews.aggregate(avg=Avg('rating') )['avg']
+    if rating is None:
+        rating=0
     if (rating - int(rating)) > 0:
         rating = '{:.1f}'.format(rating)
     else :
