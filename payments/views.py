@@ -25,8 +25,8 @@ def Payment_View(request,booking_id):
                 'quantity': 1,}],
             mode='payment', 
             billing_address_collection='required', 
-            success_url=f'http://127.0.0.1:8000/payment/success/{booking.id}/',
-            cancel_url=f'http://127.0.0.1:8000/payment/cancel/{booking.id}/')
+            success_url=f'https://arkcode.in/payment/success/{booking.id}/',
+            cancel_url=f'https://arkcode.in/payment/cancel/{booking.id}/')
         return redirect(session.url, code=303)
     return render(request, 'payments/payment.html', {
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
