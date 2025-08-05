@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b1yd3reqzyommb2o3h9c9&pex9^xs*1c0%-@zt55*^&7@btsge'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['16.171.93.97','*','www.arkcode.in','arkcode.in']
 
