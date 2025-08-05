@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['16.171.93.97','*','www.arkcode.in','arkcode.in']
 
-
+CSRF_TRUSTED_ORIGINS = ['https://arkcode.in', 'https://www.arkcode.in']
 # Application definition
 
 INSTALLED_APPS = [
