@@ -30,7 +30,7 @@ def IdentifyUserView(request):
                     f'Your OTP is {otp} enter otp to reset the password',
                     'support@arkcode.in',
                     [email],
-                    fail_silently=True,
+                    fail_silently=False,
                 )
                 messages.success(request,'user found otp has sent to registerd email')
                 en_uname = enc_uname(user.username)
