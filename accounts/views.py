@@ -28,7 +28,7 @@ def IdentifyUserView(request):
                 send_mail(
                     'OTP Verification',
                     f'Your OTP is {otp} enter otp to reset the password',
-                    'anthonyalex543@gmail.com',
+                    'support@arkcode.in',
                     [email],
                     fail_silently=True,
                 )

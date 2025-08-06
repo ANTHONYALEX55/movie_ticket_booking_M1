@@ -21,7 +21,7 @@ class Movie(models.Model):
     status = models.CharField(max_length=255,choices=[('Upcoming','Upcoming'),
                                         ('Released','Released')],null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    movie_image = models.ImageField(upload_to='movies/',null=True,blank=True)
+    movie_image = models.ImageField(upload_to='movies/',null=True,blank=True,default=None)
     slug = models.CharField(max_length=2000,null=True,blank=True)
 
     def __str__(self):
