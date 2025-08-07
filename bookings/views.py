@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from theaters.models import Theater,Showtime
 from movies.models import Movie 
 from django.db.models import Q
@@ -10,6 +10,8 @@ from .models import Booking,BookingSeat
 import json
 from accounts.models import User
 from django.conf import settings
+from django.contrib import messages
+
 
 
 # Create your views here.
@@ -114,5 +116,13 @@ def Book_Ticket_View(request,show_id):
         return render(request,'bookings/proceed_to_payment.html',context)
     return HttpResponse('Invalid Request')
             
-
+@login_required
+def cancel_booking(request,booking_id):
+    booking = Booking.objects.get(id=booking_id)
+    booking.booking_status = 'cancelled'
+    booking.save()
+    qs = BookingSeat.objects.filter(booking=booking)
+    qs.delete()
+    messages.error(request,'your booking have been cancelled amount refunded to your bank account')
+    return redirect('yourorders')
 
