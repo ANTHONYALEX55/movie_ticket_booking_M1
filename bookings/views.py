@@ -119,7 +119,7 @@ def Book_Ticket_View(request,show_id):
 @login_required
 def cancel_booking(request,booking_id):
     booking = Booking.objects.get(id=booking_id)
-    booking.booking_status = 'cancelled'
+    booking.status = 'cancelled'
     booking.save()
     qs = BookingSeat.objects.filter(booking=booking)
     qs.delete()
