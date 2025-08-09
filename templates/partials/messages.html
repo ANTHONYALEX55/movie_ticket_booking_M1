@@ -35,3 +35,13 @@
 </div>
 
 {% endfor %}
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function() {
+            const alert = document.querySelector('.alert-container');
+            if (alert) {
+                alert.style.display = 'none';
+            }
+        }, 5000);
+    });
+  </script>

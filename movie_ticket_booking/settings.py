@@ -206,11 +206,19 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': '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',
             'key': ''
         },
+<<<<<<< HEAD
          'SCOPE': [
             'profile',
             'email',
         ],
          'AUTH_PARAMS': {
+=======
+	'SCOPE': [
+            'profile',
+            'email',  # <-- This is crucial
+        ],
+        'AUTH_PARAMS': {
+>>>>>>> 3bedcdd (email)
             'access_type': 'online',
         }
     }
