@@ -205,6 +205,13 @@ SOCIALACCOUNT_PROVIDERS = {
             'client_id': '78738620980-5bu2k64pgu49ooh5e7j0m7v9uafrbadp.apps.googleusercontent.com',
             'secret': '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',
             'key': ''
+        },
+         'SCOPE': [
+            'profile',
+            'email',
+        ],
+         'AUTH_PARAMS': {
+            'access_type': 'online',
         }
     }
 }
