@@ -1,26 +1,34 @@
-name: Deploy
+name: Deploy Django App to AWS EC2
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main  # Run deployment on push to main
 
 jobs:
   deploy:
+    name: Deploy to EC2
     runs-on: ubuntu-latest
 
-    env:
-      EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
-      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-      GOOGLE_SECRET_KEY: ${{ secrets.GOOGLE_SECRET_KEY }}
-      STRIPE_PUBLIC_KEY: ${{ secrets.STRIPE_PUBLIC_KEY }}
-      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Deploy or run script
-        run: |
-          echo "Deploying with secrets..."
-          # Example usage:
-          echo "Stripe key: $STRIPE_PUBLIC_KEY"
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+        ssh-keyscan -H 16.171.93.97 >> ~/.ssh/known_hosts
+
+    - name: Deploy to EC2 and restart app
+      run: |
+        ssh -i ~/.ssh/id_ed25519 ubuntu@16.171.93.97 << 'EOF'
+          cd /home/ubuntu/movie_ticket_booking_M1
+          git pull origin main
+          source venv/bin/activate
+          pip install -r requirements.txt
+          python manage.py migrate --noinput
+          python manage.py collectstatic --noinput
+          sudo systemctl restart django_app
+        EOF
