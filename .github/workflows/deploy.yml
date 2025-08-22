@@ -32,3 +32,5 @@ jobs:
           python manage.py collectstatic --noinput
           sudo systemctl restart django_app
         EOF
+    - name: Deploy to EC2 and restart app
+      run: ssh -i ~/.ssh/id_ed25519 ubuntu@16.171.93.97 'bash ~/movie_ticket_booking_M1/build.sh'
