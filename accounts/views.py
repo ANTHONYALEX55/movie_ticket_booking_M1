@@ -154,6 +154,7 @@ def RegisterView(request):
                 [email],
                 fail_silently=True
             )
+            messages.success(request,'User account registered successfully')
             return redirect('login')
     form = RegisterForm()
     context = {

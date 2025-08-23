@@ -19,7 +19,13 @@
         </div>
         <form action="" class="form" method="post">
             {% csrf_token %}
-            
+            <div class="input-group mb-3">
+               {{form.first_name|as_crispy_field}}
+              </div>
+
+            <div class="input-group mb-3">
+                {{form.last_name|as_crispy_field}}
+                    </div>
             <div class="input-group mb-3">
                {{form.username|as_crispy_field}}
               </div>
