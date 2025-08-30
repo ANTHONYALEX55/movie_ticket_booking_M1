@@ -1,0 +1,151 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Background */
+body {
+  background-color: #f8f7f7;
+  font-family: 'Segoe UI', sans-serif;
+  color: rgb(12, 12, 12);
+}
+
+/* Header Container */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 16px 32px;
+  border-bottom: 1px solid #222;
+}
+
+/* Logo Title */
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #d2cece;
+  padding: 8px 12px;
+  border-radius: 25px;
+  width: 50%;
+  max-width: 500px;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgb(8, 8, 8);
+  font-size: 14px;
+  padding-right: 10px;
+}
+
+.search-btn {
+    background-color: #000000;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.auth-link {
+  text-decoration: none;
+  color: #0e0e0e;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+.auth-link:hover {
+  color: #040404;
+}
+
+.auth-btn {
+  background-color: #000000;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+.auth-btn:hover {
+  background-color: #e32424;
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.user-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  min-width: 180px;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background: #f4f4f4;
+}
+
+.user-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .auth-buttons {
+    justify-content: flex-end;
+  }
+}
