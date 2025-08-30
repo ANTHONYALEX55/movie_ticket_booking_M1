@@ -5,43 +5,70 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/login2.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <div class="login-page">
-    
-    <div class="login-card position-relative top-50 start-50 translate-middle">
-        
-            <div class="title text-center mt-4">
-                <h3>SIGN IN</h3>
-            </div>
-            <form action="" method="post">
-                {% csrf_token %}
-                <div class="input-group mb-3">
-                    {{form.username|as_crispy_field}}
-                </div>
-                <div class="input-group mb-3">
-                    {{form.password|as_crispy_field}}
-                    <a href="{% url 'identifyuser' %}" id="forgotpwd-text">Forgot Password ?click here  </a>
-                </div>
-                <div class="input-group mb-3">
-                <input type="submit" value="LOGIN" class="submitbtn btn btn-dark"> <br> <br> <br>
-                <span  id="login_text" >Create a new account <a href="{% url 'register' %}" id="login_url" >Register</a></span>
-            </div>
-            <div class="input-group mb-3">
-               <hr width="700px">
-            </div>
-            <div class="input-group mb-3">
-                
-                <div class="google">
-                    `        <a href="{% provider_login_url 'google' %}">
-                    <img src="{% static 'img/icon-google.png' %}" alt=""> <span>Google</span>
-                    </a>
-                </div> 
-            </div>
-            </form>
+    <div class="login-card">
+        <div class="title text-center mt-4">
+            <h3>SIGN IN</h3>
         </div>
-    </div>
 
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                {{ form.username|as_crispy_field }}
+            </div>
+
+            <div class="input-group mb-1">
+                {{ form.password|as_crispy_field }}
+                <span class="password-toggle-icon" onclick="togglePassword()">
+        <i class="fas fa-eye"></i>
+    </span>
+            </div>
+
+<div class="forgot-container">
+    <a href="{% url 'identifyuser' %}" id="forgotpwd-text">Forgot Password? Click here</a>
+</div>
+            <div class="input-group mb-3">
+                <button type="submit" class="submitbtn btn btn-dark w-100">LOGIN</button>
+            </div>
+
+            <span id="login_text">
+                Create a new account <a href="{% url 'register' %}" id="login_url">Register</a>
+            </span>
+
+            <hr class="my-4">
+
+            <div class="google">
+    <a href="{% provider_login_url 'google' %}">
+        <img src="{% static 'img/icon-google.png' %}" alt="Google Icon"> 
+        <span>Google</span>
+    </a>
+</div>
+        </form>
+    </div>
+</div>
+
+<script>
+    
+function togglePassword() {
+  const pwdField = document.getElementById("id_password");
+  const icon = document.querySelector(".password-toggle-icon i");
+
+  if (pwdField.type === "password") {
+    pwdField.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    pwdField.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
+
+</script>
 {% endblock %}
 
 

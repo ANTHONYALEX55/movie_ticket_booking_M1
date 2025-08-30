@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+
+{% block title %}Movie Ticket Booking | Register{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+<div class="register-container">
+    <div class="register-card">
+        <div class="title">
+            <h2>Register</h2>
+        </div>
+
+        {% if form.errors %}
+        <div class="form-errors">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li><strong>{{ field.label }}</strong>: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <form method="post" class="form">
+            {% csrf_token %}
+            {{ form.first_name|as_crispy_field }}
+            
+            {{ form.last_name|as_crispy_field }}
+            {{ form.username|as_crispy_field }}
+            <small id="username-feedback"></small>
+            {{ form.email|as_crispy_field }}
+            <small id="email-feedback"></small>
+            {{ form.phone|as_crispy_field }}
+            <small id="phone-feedback"></small>
+            {{ form.password1|as_crispy_field }}
+            
+            <small id="password1-feedback"></small>
+            {{ form.password2|as_crispy_field }}
+            <small id="password2-feedback"></small>
+
+            <button type="submit" id="submitbtn" class="submit-btn" >Register</button>
+
+            <div class="login-link">
+                Already have an account? <a href="{% url 'login' %}">Login</a>
+            </div>
+
+            <div class="or-divider">
+                <span>OR</span>
+            </div>
+
+            <div class="google-login">
+                <a href="{% provider_login_url 'google' %}">
+                    <img src="{% static 'img/icon-google.png' %}" alt="Google Icon">
+                    <span>Register with Google</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock %}

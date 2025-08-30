@@ -1,0 +1,28 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/header2.css' %}">
+
+<header class="header">
+  <div class="logo">Movie Tickets</div>
+
+  <div class="search-container">
+    <input type="text" placeholder="Search for movies..." class="search-input" />
+    <button class="search-btn">search</button>
+  </div>
+
+  <div class="auth-buttons">
+    {% if user.is_authenticated %}
+      <div class="user-dropdown">
+        <button class="user-btn">{{ user.username }} <img src="{% static 'img/chevron-down-16.svg' %}" alt=""></button>
+        <div class="dropdown-content">
+          <a href="">Update Profile</a>
+          <a href="">Change Password</a>
+          <a href="">Your Orders</a>
+          <a href="{% url 'logout' %}">Logout</a>
+        </div>
+      </div>
+    {% else %}
+      <a href="{% url 'login' %}" class="auth-link">Login</a>
+      <a href="{% url 'register' %}" class="auth-btn">Register</a>
+    {% endif %}
+  </div>
+</header>

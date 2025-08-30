@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import RegisterForm,LoginForm,IdentifyForm
 from django.core.mail import send_mail
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -10,7 +10,10 @@ from django.utils import timezone
 import datetime
 from .utils import get_otp,enc_uname,dec_uname
 from django.contrib.auth.forms import SetPasswordForm
+from django.views import View
+import re
 # Create your views here.
+
 def IdentifyUserView(request):
     if request.method == 'POST':
         form = IdentifyForm(request.POST)
@@ -160,4 +163,101 @@ def RegisterView(request):
     context = {
         'form': form
     }
-    return render(request, 'accounts/register.html', context)
+    return render(request, 'accounts/newregister.html', context)
+
+
+class ValidateUsername(View):
+    def post(self,request):
+        username = request.POST.get('username')
+        data = {
+            'is_taken': User.objects.filter(username__iexact=username).exists()
+        }
+        if data['is_taken']:
+            data['error_message'] = 'username already taken'
+            return JsonResponse(data)
+        else:
+            data['success_message'] = 'username is available'
+            return JsonResponse(data)
+        
+
+class ValidateEmail(View):
+    def post(self,request):
+        email = request.POST.get('email')
+        data = {
+            'is_taken': User.objects.filter(email__iexact=email).exists()
+        }
+        email_regex = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
+        if  data['is_taken']:
+            data['error_message'] = 'account with this email already exists'
+            return JsonResponse(data)
+        elif not re.match(email_regex, email):
+            return JsonResponse({"invalid_format": True,
+                                 "error_message": "Enter a valid email address",
+                                  "is_taken": False})
+        else:
+            data['success_message'] = 'email is available'
+            return JsonResponse(data)
+        
+class ValidatePhone(View):
+    def post(self,request):
+        phone = request.POST.get('phone')
+        data = {
+            'is_taken': User.objects.filter(phone__iexact=phone).exists()
+        }
+        if  data['is_taken']:
+            data['error_message'] = 'account with this phone number already exists'
+            return JsonResponse(data)
+        elif not(len(phone)==10 and str(phone)[0] >'5'):
+            return JsonResponse({"invalid_format": True,
+                                 "error_message": "Enter a valid phone number",
+                                  "is_taken": False})
+        else:
+            data['success_message'] = 'phone number is available'
+            return JsonResponse(data) 
+        
+class ValidatePassword1(View):
+    def post(self,request):
+        password1 = request.POST.get('password1')
+        min_length = 8
+        data = {}
+        if len(password1) < min_length:
+            data['error_message'] = f'Password must be at least {min_length} characters long.'
+            data['is_valid'] = False
+            return JsonResponse(data)
+        if not re.search(r'[A-Z]', password1):
+            data['error_message'] = 'Password must contain at least one uppercase letter.'
+            data['is_valid'] = False
+            return JsonResponse(data)
+        if not re.search(r'[a-z]', password1):
+            data['error_message'] = 'Password must contain at least one lowercase letter.'
+            data['is_valid'] = False
+            return JsonResponse(data)
+        if not re.search(r'\d', password1):
+            data['error_message'] = 'Password must contain at least one digit.'
+            data['is_valid'] = False
+            return JsonResponse(data)
+        if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password1):
+            data['error_message'] = 'Password must contain at least one special character.'
+            data['is_valid'] = False
+            return JsonResponse(data)
+        data['success_message'] = 'Strong password'
+        data['is_valid'] = True
+        return JsonResponse(data) 
+    
+class ValidatePassword2(View):
+    def post(self,request):
+        print(request.body)
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        print(password1)
+        data = {}
+        if password1 != password2:
+            data['error_message'] = 'Password and Confirm Password does not match'
+            data['is_valid'] = False
+
+            return JsonResponse(data)
+        else:
+            data['success_message'] = 'Password and Confirm Password matched'
+            data['is_valid'] = True
+            return JsonResponse(data)  
+    
