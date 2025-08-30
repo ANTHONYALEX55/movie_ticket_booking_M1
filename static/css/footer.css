@@ -5,7 +5,9 @@
   font-family: Arial, sans-serif;
   font-size: 13px;
 }
-
+.hbj{
+    border: 20px;
+}
 .footer h4 {
   color: #ccc;
   margin-bottom: 8px;

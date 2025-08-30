@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     node.classList.add("form-text")
     node.classList.add('text-muted')
     
-    div_pass.append(node)
+    div_pass.append(node);
 
     
 

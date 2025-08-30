@@ -181,7 +181,9 @@
   position: relative;
   width: 100%;
 }
-
+.hbj{
+    border: 20px;
+}
 .password-toggle-icon {
   position: absolute;
   top: 50%;

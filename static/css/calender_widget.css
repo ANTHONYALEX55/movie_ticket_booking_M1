@@ -5,7 +5,9 @@
     font-family: sans-serif;
     padding: 10px;
 }
-
+.hbj{
+    border: 20px;
+}
 .day {
     text-align: center;
     padding: 8px 10px;

@@ -110,3 +110,7 @@
   opacity: 0.5;           /* Visually show it's disabled */
   cursor: not-allowed;
 }
+
+.hbj{
+    border: 20px;
+}
