@@ -3,8 +3,6 @@ venv/
 __pycache__/
 *.sqlite3
 .env
-static/
-media/
 db.sqlite3
 *.pyc
 __pycache__/
