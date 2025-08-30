@@ -1,0 +1,146 @@
+/* Base styles */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 15px;
+    min-height: 100vh;
+}
+
+/* Card */
+.register-card {
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.title h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Form field spacing */
+.form .form-group {
+    margin-bottom: 15px;
+}
+
+/* Submit button */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.submit-btn:hover {
+    background-color: #333;
+}
+
+/* Login link */
+.login-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+.login-link a {
+    color: #28a745;
+    text-decoration: none;
+    font-weight: 500;
+}
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Google login button */
+.google-login {
+    margin-top: 20px;
+    text-align: center;
+}
+.google-login a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    background: #fff;
+    transition: background-color 0.3s;
+}
+.google-login a:hover {
+    background-color: #f0f0f0;
+}
+.google-login img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Divider */
+.or-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    position: relative;
+    font-size: 14px;
+    color: #888;
+}
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ccc;
+    margin: 0 10px;
+}
+
+/* Error messages */
+.form-errors {
+    background-color: #ffe0e0;
+    border: 1px solid #ffaaaa;
+    color: #c00;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.form-errors ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .register-card {
+        padding: 20px 15px;
+    }
+    .submit-btn {
+        font-size: 16px;
+    }
+    .google-login a {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

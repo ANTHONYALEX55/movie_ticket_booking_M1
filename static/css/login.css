@@ -1,0 +1,202 @@
+.login-card {
+    max-width: 700px;
+    width: 90%;
+    min-height: 600px; 
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid rgb(228, 226, 226);
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+
+.login-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 231, 231);
+}
+
+#div_id_username, #div_id_password {
+    width: 100%;
+    margin: 10px auto;
+}
+
+#id_username, #id_password {
+    height: 55px;
+}
+
+.submitbtn {
+    width: 100%;
+    height: 55px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(194, 192, 192);
+    margin: 20px auto;
+    width: 220px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.google:hover {
+    background-color: #f5f5f5;
+}
+.google a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    width: 100%;
+}
+.google span {
+    font-size: 18px;
+    margin-left: 15px;
+}
+.google img {
+    height: 24px;
+    width: 24px;
+}
+
+#login_text {
+    display: block;
+    text-align: center;
+    color: rgb(60, 59, 59);
+    font-size: 15px;
+    margin-top: 10px;
+}
+#login_url {
+    text-decoration: none;
+    color: rgb(81, 231, 26);
+    font-weight: bold;
+}
+
+.btn {
+    font-size: 18px;
+}
+
+#forgotpwd-text {
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+    color: rgb(60, 59, 59);
+    font-size: 14px;
+    text-decoration: none;
+}
+#forgotpwd-text:hover {
+    text-decoration: underline;
+}
+.login-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;  /* center horizontally */
+    align-items: center;      /* center vertically */
+    background-color: rgb(231, 231, 231);
+}
+
+.login-card {
+    max-width: 700px;
+    width: 90%;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid rgb(228, 226, 226);
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+/* Forgot Password centered */
+.forgot-container {
+    text-align: center;
+    margin: 10px 0;
+}
+
+#forgotpwd-text {
+    color: rgb(60, 59, 59);
+    font-size: 14px;
+    text-decoration: none;
+}
+#forgotpwd-text:hover {
+    text-decoration: underline;
+}
+
+/* Google login centered with flexbox */
+.google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(194, 192, 192);
+    margin: 20px auto;
+    width: 220px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.google:hover {
+    background-color: #f5f5f5;
+}
+.google a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+}
+.google img {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+.google span {
+    font-size: 18px;
+}
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-10%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+    user-select: none;
+}
+.toggle-password:hover {
+    color: black;
+}
+
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(0%);
+  cursor: pointer;
+}
+
+.password-toggle-icon i {
+  font-size: 18px;
+  line-height: 1;
+  color: #333;
+  transition: color 0.3s ease-in-out;
+}
+
+.password-toggle-icon i:hover {
+  color: #000;
+}
