@@ -1,0 +1,13 @@
+   .movie-grid a {
+       text-decoration: none;
+       color:black;
+    }
+    .movies {
+        margin-top: 50px;
+    }
+    .container-fluid{
+        min-height: 800px;
+    }
+.hbj{
+    border: 20px;
+}
