@@ -15,4 +15,6 @@ python manage.py collectstatic --noinput
 
 sudo systemctl restart django_app
 
+sudo systemctl restart nginx
+
 echo "Deployment completed successfully!"
